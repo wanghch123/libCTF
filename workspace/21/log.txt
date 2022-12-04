@@ -1,0 +1,410 @@
+The current micrograph idx: 1
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  2037.96 
+defocus_2:  1767.14 
+astigmatism_azimuth:  -1.05812 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 2
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1930.77 
+defocus_2:  1820.51 
+astigmatism_azimuth:  1.41484 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 3
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1928.39 
+defocus_2:  1826.89 
+astigmatism_azimuth:  -0.575918 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 4
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1853.88 
+defocus_2:  1816.58 
+astigmatism_azimuth:  0.294351 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 5
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1836.07 
+defocus_2:  1823.22 
+astigmatism_azimuth:  0.360126 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 6
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1821.44 
+defocus_2:  1811.51 
+astigmatism_azimuth:  0.525084 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 7
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1814.88 
+defocus_2:  1798.73 
+astigmatism_azimuth:  0.256929 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 8
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1811.72 
+defocus_2:  1782.13 
+astigmatism_azimuth:  0.971576 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 9
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1803.78 
+defocus_2:  1799.35 
+astigmatism_azimuth:  1.20598 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 10
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1805.72 
+defocus_2:  1787.31 
+astigmatism_azimuth:  -1.32971 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 11
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1813.56 
+defocus_2:  1789.4 
+astigmatism_azimuth:  0.539838 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 12
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1790.95 
+defocus_2:  1783.17 
+astigmatism_azimuth:  0.9305 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 13
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1798.45 
+defocus_2:  1776.36 
+astigmatism_azimuth:  1.47286 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 14
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1785.1 
+defocus_2:  1777.89 
+astigmatism_azimuth:  0.956033 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 15
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1782.09 
+defocus_2:  1766.18 
+astigmatism_azimuth:  0.432443 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 16
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1783.63 
+defocus_2:  1768.72 
+astigmatism_azimuth:  1.03918 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 17
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1780.53 
+defocus_2:  1770.83 
+astigmatism_azimuth:  0.920148 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 18
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1789.82 
+defocus_2:  1775.78 
+astigmatism_azimuth:  1.1152 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 19
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1796.8 
+defocus_2:  1778.68 
+astigmatism_azimuth:  -1.55549 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 20
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1803.28 
+defocus_2:  1783.67 
+astigmatism_azimuth:  0.905808 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 21
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1834.82 
+defocus_2:  1834.44 
+astigmatism_azimuth:  1.32478 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 22
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1803.28 
+defocus_2:  1790.7 
+astigmatism_azimuth:  1.24967 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 23
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1787.21 
+defocus_2:  1775.56 
+astigmatism_azimuth:  1.15758 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 24
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1787.77 
+defocus_2:  1771.69 
+astigmatism_azimuth:  1.50105 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 25
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1785.35 
+defocus_2:  1785.35 
+astigmatism_azimuth:  1.55654 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 26
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1777.11 
+defocus_2:  1766.75 
+astigmatism_azimuth:  0.90668 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 27
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1788.04 
+defocus_2:  1770.31 
+astigmatism_azimuth:  -1.49696 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 28
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1786.5 
+defocus_2:  1786.5 
+astigmatism_azimuth:  1.51291 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 29
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1788.15 
+defocus_2:  1779.11 
+astigmatism_azimuth:  -0.018912 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 30
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1790.9 
+defocus_2:  1787.15 
+astigmatism_azimuth:  0.699477 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 31
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1800.08 
+defocus_2:  1799.63 
+astigmatism_azimuth:  1.35796 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 32
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1802.02 
+defocus_2:  1787.55 
+astigmatism_azimuth:  1.4031 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 33
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1820.68 
+defocus_2:  1811.78 
+astigmatism_azimuth:  1.5156 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 34
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1830.95 
+defocus_2:  1816.08 
+astigmatism_azimuth:  1.21954 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 35
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1837.39 
+defocus_2:  1829.1 
+astigmatism_azimuth:  -1.36158 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 36
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1836.07 
+defocus_2:  1836.07 
+astigmatism_azimuth:  0.334809 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 37
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1843.36 
+defocus_2:  1843.36 
+astigmatism_azimuth:  0.858407 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 38
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1852.33 
+defocus_2:  1852.33 
+astigmatism_azimuth:  0.858407 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 39
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1946.72 
+defocus_2:  1874.39 
+astigmatism_azimuth:  -0.862448 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 40
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1940.12 
+defocus_2:  1861.52 
+astigmatism_azimuth:  0.865546 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
+The current micrograph idx: 41
+spherical_aberration:  8.85246e+06 
+wavelength:  0.00645273 
+amplitude_contrast:  0.07 
+defocus_1:  1946.7 
+defocus_2:  1763.6 
+astigmatism_azimuth:  0.422772 
+additional_phase_shift:  0 
+precomputed_amplitude_contrast_term: 0.0700573 
+
