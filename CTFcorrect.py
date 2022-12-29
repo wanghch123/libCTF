@@ -37,6 +37,8 @@ class CTF_Estimator:
         self.f1 = []
         self.f2 = []
         self.astigmatism_azimuth = []
+
+        self.workspace_path = ctffind_out_path
         with open(os.path.join(ctffind_out_path, file_name + '.txt'), 'r') as f:
             lines = f.readlines()
             for i in range(5, len(lines)):
@@ -45,6 +47,10 @@ class CTF_Estimator:
                 self.f1.append(float(line[1])/self.pixel_size)
                 self.f2.append(float(line[2])/self.pixel_size)
                 self.astigmatism_azimuth.append(np.radians(np.float32(line[3])).astype(np.float32))
+
+        self.f1 = np.array(self.f1, dtype='float32')
+        self.f2 = np.array(self.f2, dtype='float32')
+        self.astigmatism_azimuth = np.array(self.astigmatism_azimuth, dtype='float32')
 
         self.fre = []
         self.ctf_1d = []
@@ -61,6 +67,13 @@ class CTF_Estimator:
         # return 0.5 * (1838.64 + 1833.86 + (1838.64 - 1833.86) * np.cos(2 * (alpha - self.astigmatism_azimuth[idx])))
         return 0.5 * (self.f1[idx] + self.f2[idx] + (self.f1[idx] - self.f2[idx]) * np.cos(2 * (alpha - self.astigmatism_azimuth[idx])))
 
+    def calculate_defocuses(self, alpha):
+        f1 = self.f1.reshape(-1,1,1)
+        f2 = self.f2.reshape(-1,1,1)
+        astigmatism_azimuth = self.astigmatism_azimuth.reshape(-1,1,1)
+        defocuses = 0.5 * (f1 + f2 + (f1 - f2) * np.cos(2 * (alpha - astigmatism_azimuth)))
+        return defocuses
+
     def calculate_astigmatism(self, defocus, g_square):
         return defocus - 0.5 * self.lamb**2 * g_square * self.Cs
 
@@ -73,23 +86,42 @@ class CTF_Estimator:
 
     def cal_ctf(self):
         print("Calculating CTF...")
-
-        resolution = self.frames[0].shape
-        assert resolution[0] == resolution[1], 'image is not square'
-        n = resolution[0]
-        X = np.linspace(-1, 1, n)
-        Y = np.linspace(-1, 1, n)
-        X, Y = np.meshgrid(X, Y)
-        self.ctf = np.zeros(shape = (self.num_frames, n, n))
+        nx, ny = self.frames[0].shape
+        X = np.linspace(-nx//2, nx//2 - 1, nx) / nx
+        Y = np.linspace(-ny//2, ny//2 - 1, ny) / ny
+        X, Y = np.meshgrid(X, Y, indexing='ij')
+        # print(nx, ny, X.shape, Y.shape)
+        self.ctf = np.zeros(shape = (self.num_frames, nx, ny), dtype = 'float32')
         for idx in tqdm(range(self.num_frames)):
-            for i in range(n):
-                for j in range(n):
+            for i in range(nx):
+                for j in range(ny):
                     x = X[i,j]
                     y = Y[i,j]
                     alpha = np.arctan2(y, x)
                     defocus = self.calculate_defocus(alpha, idx)
                     g_square = (x**2 + y**2)
-                    self.ctf[idx, i, j] = np.abs(self.calculate_ctf(defocus, g_square))
+                    self.ctf[idx, i, j] = self.calculate_ctf(defocus, g_square)
+
+    def cal_ctf_vectorized(self):
+        nx, ny = self.frames[0].shape
+        X = np.linspace(-nx//2, nx//2 - 1, nx) / nx
+        Y = np.linspace(-ny//2, ny//2 - 1, ny) / ny
+        X, Y = np.meshgrid(X, Y, indexing='ij')
+        XY = np.concatenate([X[..., None], Y[..., None]], axis=-1).reshape(nx, ny, 2)
+        alpha = np.arctan2(XY[..., 1], XY[..., 0])
+        alpha = np.expand_dims(alpha, axis=0).repeat(self.num_frames, axis=0)
+        g_square = np.sum(XY**2, axis=-1)
+        g_square = np.expand_dims(g_square, axis=0).repeat(self.num_frames, axis=0)
+        defouses = self.calculate_defocuses(alpha)
+        # print(defouses.shape)
+        phi = self.calculate_phi(defouses, g_square)
+        # print(phi.shape)
+        self.ctf = -np.sin(phi)
+        print("Cs: ", self.Cs)
+        print("lambda: ", self.lamb)
+        # print(self.ctf.shape)
+        # plt.imshow(np.abs(self.ctf[20]), cmap='gray')
+        # plt.show()
     
     def cal_ctf_multi(self):
         resolution = self.frames[0].shape
@@ -106,10 +138,6 @@ class CTF_Estimator:
             res = p.starmap(self.cal_ctf_pixel, coord) 
             p.close()
         return res
-
-    def show_ctf(self, idx):
-        plt.imshow(self.ctf[idx], cmap='gray')
-        plt.show()
     
     def cal_ctf_pixel(self, x, y, idx):
         alpha = np.arctan2(y, x)
@@ -147,26 +175,47 @@ class CTF_Estimator:
         print("Mean error: ", np.mean(np.abs(ctf_1d - np.abs(f))))    
 
 
-    def do_ctf_correction(self):
+    def do_ctf_correction(self, threshold = 0.2, flip = False):
         self.fourier_corrected_frames = np.zeros_like(self.frames)
         print("Doing CTF correction...")
-        ctf_used = self.ctf
-        ctf_used[ctf_used < 1e-3] = 1e-3
-        self.fourier_corrected_frames = np.divide(self.fourier_frames, ctf_used)
+        if flip:
+            ctf_sign = np.sign(self.ctf)
+            self.fourier_corrected_frames = self.fourier_frames * ctf_sign
+        else:
+            ctf_used = self.ctf
+            ctf_used[np.abs(ctf_used) < threshold] = np.sign(ctf_used[np.abs(ctf_used) < threshold]) * threshold
+            self.fourier_corrected_frames = np.divide(self.fourier_frames, ctf_used)
+
         self.corrected_frames = np.real(np.fft.ifft2(np.fft.ifftshift(self.fourier_corrected_frames, axes=(1,2)),axes=(1,2)))
+
+    def output_mrc(self):
+        output_mrc_path = os.path.join(self.workspace_path, "output")
+        if not os.path.exists(output_mrc_path):
+            os.mkdir(output_mrc_path)
+        self.cal_ctf_vectorized()
+        for t in tqdm([0.1, 0.2, 0.5]):
+            self.do_ctf_correction(t)
+            with mrcfile.new(os.path.join(output_mrc_path, "ctf_corrected_noabs_t_{}.mrc".format(t)), overwrite=True) as mrc:
+                mrc.set_data(self.corrected_frames.astype('float32'))
+                mrc.close()
+        # self.do_ctf_correction(flip = True)
+        # with mrcfile.new(os.path.join(output_mrc_path, "ctf_corrected_flip.mrc"), overwrite=True) as mrc:
+        #     mrc.set_data(self.corrected_frames.astype('float32'))
+        #     mrc.close()
 
     def plot_ctf_correction(self, idx):
         frame = self.frames[idx]
         fourier_frame = self.fourier_frames[idx]
 
-        n = frame.shape[0]
-        X = np.linspace(-0.5, 0.5, n)
-        Y = np.linspace(-0.5, 0.5, n)
-        X, Y = np.meshgrid(X, Y)
+        nx, ny = self.frames[0].shape
+        X = np.linspace(-nx//2, nx//2 - 1, nx) / nx
+        Y = np.linspace(-ny//2, ny//2 - 1, ny) / ny
+        # print(X, Y)
+        X, Y = np.meshgrid(X, Y, indexing='ij')
 
-        local_ctf = np.zeros_like(fourier_frame)
-        for i in range(n):
-            for j in range(n):
+        local_ctf = np.zeros(shape = (nx, ny))
+        for i in range(nx):
+            for j in range(ny):
                 x = X[i,j]
                 y = Y[i,j]
                 alpha = np.arctan2(y, x)
@@ -174,10 +223,21 @@ class CTF_Estimator:
                 g_square = (x**2 + y**2)
                 local_ctf[i, j] = np.abs(self.calculate_ctf(defocus, g_square))
 
-        local_ctf[local_ctf < 0.8] = 0.8
+        # plt.imshow(local_ctf, cmap='gray')
+        # plt.title("CTF for frame {}".format(idx))
+        # plt.colorbar()
+        # plt.show()
+
+        local_ctf[np.abs(local_ctf) < 0.2] = 0.2# * np.sign(local_ctf[np.abs(local_ctf) < 0.2])
 
         corrected_fourier_frame = np.divide(fourier_frame, local_ctf)
-        corrected_frame = np.real(np.fft.ifft2(np.fft.ifftshift(corrected_fourier_frame, axes=(0,1)),axes=(0,1)))
+        temp = np.fft.ifft2(np.fft.ifftshift(corrected_fourier_frame, axes=(0,1)),axes=(0,1))
+        # print(temp)
+        corrected_frame = np.real(temp)
+
+        # print(local_ctf[20,10], local_ctf[nx-20, ny-10])
+        # print(fourier_frame[20,10], fourier_frame[nx-20, ny-10])
+        # print(corrected_fourier_frame[80,50], corrected_fourier_frame[nx-80, ny-50])
 
         plt.subplot(221)
         plt.imshow(frame, cmap='gray')
@@ -214,4 +274,6 @@ if __name__ == '__main__':
     # print(len(my_ctf.cal_ctf_multi()),)
     # my_ctf.cal_ctf()
     # my_ctf.do_ctf_correction()
-    my_ctf.plot_ctf_correction(20)
+    # my_ctf.plot_ctf_correction(20)
+    # my_ctf.cal_ctf_vectorized()
+    my_ctf.output_mrc()
